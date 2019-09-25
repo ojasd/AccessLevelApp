@@ -1,0 +1,26 @@
+.spotlight-search {
+  padding: 10px 0 30px 0;
+  background-color: #e9ecef;
+}
+
+.input-group-text {
+  border: none;
+}
+
+thead {
+  background-color: #e9ecef;
+}
+
+#spotlight-search {
+  margin-right: 10px;
+  border-radius: 0;
+}
+
+button {
+  margin-right: 5px;
+}
+
+tr {
+  cursor: pointer;
+}
+

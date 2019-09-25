@@ -1,20 +1,71 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<h3>
+  Access Levels
+</h3>
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
 
+      <div class="spotlight-search">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" id="addAccess"><img src="../assets/icons/add-24px.svg" alt="Add"></div>
+        </div>
+        <input type="text" class="form-control" placeholder="Spotlight Search" aria-label="Spotlight Search" id="spotlight-search"
+       [(ngModel)]="searchText">
+      </div>
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Reader Type</th>
+          <th scope="col">Reader</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let accessLevelData of (readerData | tableFilter : searchText)" (click)="displayTable(accessLevelData)" id="accessLevelData">
+          <td>{{accessLevelData.name}}</td>
+          <td>{{accessLevelData.readerTypeName}}</td>
+          <td>{{accessLevelData.readerName}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-sm">
+      <h4>Access Names</h4>
+     <div>
+       <form [formGroup]="profileForm">
+         <div class="form-group row">
+           <label class="col-sm-2 col-form-label">Name:</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" placeholder="Name"  formControlName="name">
+           </div>
+         </div>
+
+         <div class="form-group row">
+           <label class="col-sm-2 col-form-label">Description:</label>
+           <div class="col-sm-10">
+             <textarea type="text" class="form-control" placeholder="Description"  formControlName="description" rows="5" ></textarea>
+           </div>
+         </div>
+
+         <div class="form-group row">
+           <label class="col-sm-2 col-form-label">Reader(s):</label>
+           <div class="col-sm-10">
+             <select class="form-control" id="readerID" formControlName="reader">
+               <option selected>All Reader Groups</option>
+               <option *ngFor="let readerName of readerData">{{readerName.readerName}}</option>
+             </select>
+           </div>
+         </div>
+
+         <button type="submit" (click)="saveFormData(profileForm)">Save</button>
+         <button type="submit" (click)="generateAccessForm()">Cancel</button>
+       </form>
+    </div>
+  </div>
+</div>
+</div>
