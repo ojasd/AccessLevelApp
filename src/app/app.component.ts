@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * This function maps the data from different json objects into readerData to display on UI
+   * This function generates a Responsive form on the UI using Form Builder
    */
   generateAccessForm() {
     this.profileForm = this.formBuilder.group({
